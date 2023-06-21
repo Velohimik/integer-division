@@ -1,0 +1,29 @@
+stages:          # List of stages for jobs, and their order of execution
+  - compile
+  - test
+  - package
+
+compile-job:       # This job runs in the build stage, which runs first.
+  stage: compile
+  script:
+    - ./mvnw.cmd compiler:compile
+    - ./mvnw.cmd compiler:testCompile
+  artifacts:
+    paths:
+      - target/classes/
+      - target/test-classes/
+
+unit-test-job:   # This job runs in the test stage.
+  stage: test    # It only starts when the job in the build stage completes successfully.
+  script:
+    - ./mvnw.cmd surefire:test
+  dependencies:
+    - compile-job
+ 
+package-job:      # This job runs in the package stage.
+  stage: package  # It only runs when both jobs in the test stage complete successfully.
+  script:
+    - ./mvnw.cmd assembly:single
+  dependencies:
+    - compile-job
+    - unit-test-job

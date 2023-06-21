@@ -1,0 +1,25 @@
+# EditorConfig: https://EditorConfig.org
+
+# top-most EditorConfig file
+root = true
+
+# General settings
+[*]
+insert_final_newline = true
+charset = utf-8
+
+
+# Source code files
+[*.java]
+indent_style = space
+indent_size = 4
+
+
+#Batch scripts
+[*.bat]
+end_of_line = crlf
+
+
+#Shell scripts
+[*.sh]
+end_of_line = lf
