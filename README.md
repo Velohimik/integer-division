@@ -1,7 +1,5 @@
-# Task 4 (Integer Division, OOP, algoritmization)
-
-## Basic task
-Write an application that divides numbers and prints result into console. + JUnit tests(!!!).
+# Integer Division
+The application that divides numbers and prints results into a console.
 
 Example of result:
 ```bash
